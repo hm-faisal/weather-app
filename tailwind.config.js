@@ -7,6 +7,8 @@ export default {
     },
     colors: {
       bg: "rgba(255,255,255,0.2)",
+      white: "#ffffff",
+      black: "#000000",
     },
     extend: {},
   },
