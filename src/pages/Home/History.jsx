@@ -14,32 +14,38 @@ const History = () => {
         <h3 className="text-2xl font-bold">Your Weather History</h3>
         {history.map(
           (item, i) =>
-            i > 0 && (
+            i !== history.length - 1 &&
+            i < 5 && (
               <div
-                className="flex justify-start items-center text-base bg-white rounded mt-2"
+                className="bg-white rounded flex justify-center items-center flex-col mt-1 pb-2"
                 key={i}
               >
-                <div className="text-center text-black mx-auto">
-                  {weatherData && (
-                    <img
-                      src={item.icon}
-                      alt={item?.description}
-                      className="mx-auto"
-                    />
-                  )}
+                <div className="flex justify-start items-center text-base ">
+                  <div className="text-center text-black mx-auto">
+                    {weatherData && (
+                      <img
+                        src={item.icon}
+                        alt={item?.description}
+                        className="w-16 h-16"
+                      />
+                    )}
+                  </div>
+                  <div className="mr-12 text-black ">
+                    <p className="font-bold text-sm">
+                      {item?.city}, {item?.country}
+                    </p>
+                    <p>{item?.description}</p>
+                  </div>
+                  <div className="">
+                    <p className="text-4xl min-w-28 text-black">
+                      {item.temp}
+                      <sup>o</sup> C
+                    </p>
+                  </div>
                 </div>
-                <div className="mr-12 text-black ">
-                  <p className="font-bold text-sm">
-                    {item?.city}, {item?.country}
-                  </p>
-                  <p>{item?.description}</p>
-                </div>
-                <div className="">
-                  <p className="text-4xl min-w-28 text-black">
-                    {item.temp}
-                    <sup>o</sup> C
-                  </p>
-                </div>
+                <p className="text-[rgba(0,0,0,0.4)] text-sm">
+                  At: {item.time}
+                </p>
               </div>
             )
         )}

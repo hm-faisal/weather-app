@@ -1,3 +1,4 @@
+import moment from "moment";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import WeatherContext from "./WeatherContext";
@@ -44,14 +45,15 @@ const WeatherProvider = ({ children }) => {
 
   useEffect(() => {
     setHistory([
-      ...history,
       {
         icon,
         description: weatherData?.weather[0]?.description,
         city: weatherData?.name,
         country: weatherData?.sys?.country,
         temp: convertTemp(weatherData?.main?.temp).celsius.toFixed(),
+        time: moment().format("MMMM Do YYYY, h:mm:ss a"),
       },
+      ...history,
     ]);
   }, [weatherData, icon]);
 
