@@ -5,16 +5,16 @@ import WeatherContext from "./WeatherContext";
 import axios from "axios";
 import convertTemp from "../../utils/convertTemp";
 
-const API_KEY = "28c1f1292038dc316c99afca56117407";
+const API_KEY = import.meta.env.VITE_OPENWEATHERMAP_API;
 const BASE_URL = `https://api.openweathermap.org/data/2.5/weather?appid=${API_KEY}`;
 
 const WeatherProvider = ({ children }) => {
   const [location, setLocation] = useState({ city: "dhaka,BD" });
   const [weatherData, setWeatherData] = useState(null);
   const icon = `https://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`;
-  const [history, setHistory] = useState([]);
-
-  localStorage.setItem("Weather History", JSON.stringify(history));
+  const [history, setHistory] = useState(
+    JSON.parse(localStorage.getItem("Weather History")) || []
+  );
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
@@ -46,7 +46,7 @@ const WeatherProvider = ({ children }) => {
   useEffect(() => {
     setHistory([
       {
-        icon,
+        icon: `https://openweathermap.org/img/wn/${weatherData?.weather[0]?.icon}@2x.png`,
         description: weatherData?.weather[0]?.description,
         city: weatherData?.name,
         country: weatherData?.sys?.country,
@@ -55,7 +55,12 @@ const WeatherProvider = ({ children }) => {
       },
       ...history,
     ]);
-  }, [weatherData, icon]);
+  }, [weatherData]);
+
+  localStorage.setItem(
+    "Weather History",
+    JSON.stringify(history.filter((item) => item.city).slice(0, 6))
+  );
 
   const contextValue = {
     location,

@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
-import logo from "./../assets/logo.png";
+import logo from "./../assets/logo.webp";
 
 const Navbar = () => {
   return (
     <section className="text-white h-[97%] bg-[rgba(255,255,255,0.2)] backdrop-blur-md border border-[rgba(255,255,255,0.2)] shadow-lg shadow-[rgba(0, 0, 0, 0.2)] rounded">
       <nav className="h-full px-12 py-5 flex flex-col justify-between">
-        <img src={logo} alt="" className="self-center" />
+        <img src={logo} alt="" className="self-center rounded-full" />
         <ul className="relative space-y-5">
           <li className=" text-lg text-white leading-10  ">
             <NavLink

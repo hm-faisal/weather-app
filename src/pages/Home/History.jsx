@@ -3,7 +3,9 @@ import useWeather from "../../hooks/useWeather";
 
 const History = () => {
   const { weatherData } = useWeather();
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState(
+    JSON.parse(localStorage.getItem("Weather History")) || []
+  );
   useEffect(() => {
     setHistory(JSON.parse(localStorage.getItem("Weather History")));
   }, [weatherData]);
