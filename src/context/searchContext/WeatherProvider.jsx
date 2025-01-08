@@ -34,6 +34,8 @@ const WeatherProvider = ({ children }) => {
     axios
       .get(`${BASE_URL}&q=${location.city}`)
       .then((res) => setWeatherData(res.data));
+
+    return;
   }, [location]);
 
   const contextValue = {
