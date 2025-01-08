@@ -54,7 +54,7 @@ const TodayHighlights = () => {
       <div className="content grid grid-cols-2 mt-4 gap-2">
         {highlights.map((item) => (
           <div
-            className="flex justify-between items-center bg-[#fff] p-4 rounded-md"
+            className="flex justify-between items-center flex-col-reverse md:flex-row bg-[#fff] p-4 rounded-md"
             key={item.id}
           >
             <div className="content flex justify-center items-center gap-2">

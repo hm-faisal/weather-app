@@ -3,7 +3,7 @@ const Header = () => {
   const { setLocation, weatherData } = useWeather();
   return (
     <>
-      <section className="flex justify-between px-7 py-0 items-center bg-[rgba(255,255,255,0.2)] backdrop:blur-md -web border border-[rgba(255,255,255,0.2)] rounded h-full text-white shadow-lg shadow-[rgba(0,0,0,0.1)]">
+      <section className="flex justify-between flex-col md:flex-row px-7 py-0 items-center bg-[rgba(255,255,255,0.2)] backdrop:blur-md -web border border-[rgba(255,255,255,0.2)] rounded h-full text-white shadow-lg shadow-[rgba(0,0,0,0.1)]">
         <div className="flex items-center gap-4 text-lg">
           <ion-icon name="location-outline"></ion-icon>
           <p className="text-base">
